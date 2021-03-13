@@ -6,25 +6,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: <deployment-name-from-question>
+  name: redis-master
 spec:
-  replicas: <from-question>
+  replicas: 1
   selector:
     matchLabels:
-      app: <from-question>
+      app: guestbook
       tier: back-end
   template:
     metadata:
       labels:
-        app: <from-question>
+        app: guestbook
         tier: back-end
     spec:
       containers:
-        - name: <container-name-from-question> 
+        - name: master-redis-xfusion 
           image: <image name/URL from question>
           resources:
             requests:
-              cpu: "<from-question>"
-              memory: "<from-question>"  
+              cpu: "100m"
+              memory: "100Mi"  
           ports:
-            - containerPort: <conainer-port-from-question>
+            - containerPort: 6379
